@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "parcel index.html",
     "build": "parcel build index.html --public-url ./",
-    "favicon": "cp ./favicon.ico ./dist",
-    "deploy": "npm run build && npm run favicon && git add dist && git commit -m 'Initial dist subtree commit' && git subtree push --prefix dist origin gh-pages"
+    "deploy": "npm run build && git add dist && git commit -am 'Initial dist subtree commit' && git subtree push --prefix dist origin gh-pages"
   },
   "author": "",
   "license": "ISC",
