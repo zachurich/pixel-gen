@@ -9,4 +9,4 @@ parcelRequire=function(e,r,n,t){var i="function"==typeof parcelRequire&&parcelRe
 },{"./Pixel":"Jkll","../helpers":"lTk1","../resources/colors":"/X4j"}],"Focm":[function(require,module,exports) {
 "use strict";var e=t(require("./classes/Canvas"));function t(e){return e&&e.__esModule?e:{default:e}}var n=window.devicePixelRatio,a=document.querySelector("canvas"),c=document.querySelector("#start"),r=document.querySelector("#stop"),i=1e3;a.width=i,a.height=i/2,a.style.width="".concat(i/1.5,"px"),a.style.height="".concat(i/3,"px");var s=a.getContext("2d");s.scale(n,n);var o=new e.default(s,a);c.addEventListener("click",function(){o.clearCanvas(s),o.init(s),c.innerText="restart"}),r.addEventListener("click",function(){o.stopCanvas(s)});
 },{"./classes/Canvas":"dXaI"}]},{},["Focm"], null)
-//# sourceMappingURL=https://zachurich.github.io/pixel-gen/pixel-gen.4bd81e44.map
+//# sourceMappingURL=pixel-gen.4bd81e44.map
