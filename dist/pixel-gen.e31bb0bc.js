@@ -246,6 +246,8 @@ var Canvas =
 /*#__PURE__*/
 function () {
   function Canvas(c, canvas) {
+    var spp = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 10;
+
     _classCallCheck(this, Canvas);
 
     this.context = c;
@@ -254,7 +256,7 @@ function () {
     this.bgColor = "#282828";
     this.colors = _colors.colors;
     this.palette = [];
-    this.ppf = _helpers.default.range(0, 10); // pixel per frame
+    this.ppf = _helpers.default.range(0, 20); // pixel per frame
 
     this.width = this.canvas.width;
     this.height = this.canvas.height;
@@ -262,6 +264,7 @@ function () {
     this.colorIndex = 0;
     this.reverse = false;
     this.clear = false;
+    this.spp = spp; // size per pixel
   }
 
   _createClass(Canvas, [{
@@ -323,10 +326,14 @@ function () {
       var pixel;
       var object;
       var coords = {
-        x: _helpers.default.roundToNearest(randX, 10),
-        y: _helpers.default.roundToNearest(randY, 10)
+        x: _helpers.default.roundToNearest(randX, this.spp),
+        y: _helpers.default.roundToNearest(randY, this.spp)
       };
-      pixel = new _Pixel.default(coords, this.palette[Math.floor(Math.random() * this.palette.length)]);
+      var size = {
+        w: this.spp,
+        h: this.spp
+      };
+      pixel = new _Pixel.default(coords, this.palette[Math.floor(Math.random() * this.palette.length)], size);
       object = pixel.init(ctx);
       return object;
     }
@@ -349,59 +356,53 @@ var dpiRatio = window.devicePixelRatio;
 var canvas = document.querySelector("#canvas");
 var start = document.querySelector("#start");
 var stop = document.querySelector("#stop");
-var img = document.querySelector("#canvas-png");
-var imgNode = "";
 
 function setCanvasSize() {
   var initial;
 
   if (window.innerWidth <= 500) {
-    initial = (0, _helpers.roundToNearest)(window.innerWidth, 20);
+    initial = 420;
     canvas.height = initial;
     canvas.width = initial / 2;
     canvas.style.height = canvas.height + "px";
     canvas.style.width = canvas.width + "px";
+    return 5;
   } else {
     initial = 1000;
     canvas.height = initial / 2;
     canvas.width = initial;
     canvas.style.height = initial / 3 + "px";
     canvas.style.width = initial / 1.5 + "px";
+    return 10;
   }
 }
 
 function convertToPng() {
-  var png = canvas.toDataURL("image/png");
-  imgNode = document.createElement("img");
-  imgNode.id = "canvas-png";
-  imgNode.src = png;
-  document.body.appendChild(imgNode);
+  var pngData = canvas.toDataURL("image/png");
+  window.location.href = pngData.replace(/^data:image\/[^;]/, "data:application/pixel-gen");
 }
 
-setCanvasSize();
+var spp = setCanvasSize();
 var c = canvas.getContext("2d");
 c.scale(dpiRatio, dpiRatio);
-var canvasObj = new _Canvas.default(c, canvas);
+var canvasObj = new _Canvas.default(c, canvas, spp);
 start.addEventListener("click", function () {
-  if (document.querySelector("#canvas-png")) {
-    document.body.removeChild(imgNode);
-    document.querySelector("#message").style.display = "none";
-    canvas.style.display = "block";
-  }
-
   canvasObj.clearCanvas(c);
   canvasObj.init(c);
   start.innerText = "restart";
+  var download = document.querySelector(".download");
+
+  if (download) {
+    download.removeEventListener("click", convertToPng);
+    stop.classList.remove("download");
+    stop.innerText = "stop";
+  }
 });
 stop.addEventListener("click", function () {
+  stop.classList.add("download");
+  stop.innerText = "download?";
   canvasObj.stopCanvas(c);
-
-  if (!document.querySelector("#canvas-png")) {
-    convertToPng();
-  }
-
-  document.querySelector("#message").style.display = "block";
-  canvas.style.display = "none";
+  document.querySelector(".download").addEventListener("click", convertToPng);
 });
 },{"./classes/Canvas":"classes/Canvas.js","./helpers":"helpers.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -430,7 +431,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50073" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59128" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
