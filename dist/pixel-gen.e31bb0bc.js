@@ -533,18 +533,18 @@ function setCanvasSize() {
   var initial;
 
   if (window.innerWidth <= 500) {
-    initial = 420;
+    initial = 840;
     canvas.height = initial;
     canvas.width = initial / 2;
-    canvas.style.height = canvas.height + "px";
-    canvas.style.width = canvas.width + "px";
-    return 2;
+    canvas.style.height = canvas.height / 2 + "px";
+    canvas.style.width = canvas.width / 2 + "px";
+    return 5;
   } else {
     initial = 1000;
     canvas.height = initial / 2;
     canvas.width = initial;
-    canvas.style.height = initial / 3 + "px";
-    canvas.style.width = initial / 1.5 + "px";
+    canvas.style.height = initial / 4 + "px";
+    canvas.style.width = initial / 2 + "px";
     return 10;
   }
 }
@@ -603,7 +603,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65057" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49745" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
