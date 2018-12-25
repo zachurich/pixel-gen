@@ -10,12 +10,12 @@ const stop = document.querySelector("#stop");
 function setCanvasSize() {
   let initial;
   if (window.innerWidth <= 500) {
-    initial = 840;
+    initial = 1680;
     canvas.height = initial;
     canvas.width = initial / 2;
-    canvas.style.height = canvas.height / 2 + "px";
-    canvas.style.width = canvas.width / 2 + "px";
-    return 5;
+    canvas.style.height = canvas.height / 4 + "px";
+    canvas.style.width = canvas.width / 4 + "px";
+    return 10;
   } else {
     initial = 1000;
     canvas.height = initial / 2;
