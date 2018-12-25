@@ -551,7 +551,7 @@ function setCanvasSize() {
 
 function convertToPng() {
   var pngData = canvas.toDataURL("image/png");
-  (0, _downloadjs.default)(pngData, "pixel-gen.png", "data:image/png");
+  (0, _downloadjs.default)(pngData, "pixel-gen.png", "image/png");
 }
 
 var spp = setCanvasSize();
@@ -603,7 +603,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62944" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64215" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
