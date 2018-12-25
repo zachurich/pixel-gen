@@ -10,25 +10,25 @@ const stop = document.querySelector("#stop");
 function setCanvasSize() {
   let initial;
   if (window.innerWidth <= 500) {
-    initial = 420;
+    initial = 840;
     canvas.height = initial;
     canvas.width = initial / 2;
-    canvas.style.height = canvas.height + "px";
-    canvas.style.width = canvas.width + "px";
+    canvas.style.height = canvas.height / 2 + "px";
+    canvas.style.width = canvas.width / 2 + "px";
     return 5;
   } else {
     initial = 1000;
     canvas.height = initial / 2;
     canvas.width = initial;
-    canvas.style.height = initial / 3 + "px";
-    canvas.style.width = initial / 1.5 + "px";
+    canvas.style.height = initial / 4 + "px";
+    canvas.style.width = initial / 2 + "px";
     return 10;
   }
 }
 
 function convertToPng() {
   const pngData = canvas.toDataURL("image/png");
-  download(pngData, "pixel-gen.png", "data:image/png");
+  download(pngData, "pixel-gen.png", "image/png");
 }
 
 const spp = setCanvasSize();
