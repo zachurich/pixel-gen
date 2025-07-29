@@ -18,9 +18,9 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 80vh;
+        height: 100dvh;
         font-family: sans-serif;
-        font-size: 14px;
+        font-size: 16px;
       }
 
       .controls {
@@ -30,43 +30,42 @@
         padding: 20px;
       }
 
-      #start,
-      #stop {
+      .start,
+      .stop {
         cursor: pointer;
-        color: #aaa;
+        color: #d5d5d5;
         padding: 3px 10px;
         transition: 0.05s ease-in-out;
         text-align: center;
+        background-color: #6c46dd;
       }
 
-      #start {
-        background-color: #eee;
-      }
-      #stop {
+      .stop {
         margin-top: 2px;
-        background-color: #eee;
       }
 
-      #start:hover,
-      #stop:hover {
+      .start:hover,
+      .stop:hover {
         color: white;
       }
 
-      #start:hover {
+      .stop:hover {
         background-color: #4441fd;
       }
 
-      #stop:hover {
+      .stop:hover {
         background-color: #fb3a5e;
       }
 
-      #name {
-        font-size: 12px;
-        color: #bbb;
+      .name {
+        font-size: 1rem;
+        border-bottom: 2px solid #6c46dd;
+        display: block;
         position: absolute;
         left: 0;
         bottom: 0;
-        padding: 20px;
+        margin: 20px;
+        padding-bottom: 0.25rem;
       }
 
       a {
@@ -76,11 +75,11 @@
     </style>
     <canvas id="canvas"></canvas>
     <div class="controls">
-      <div id="start">start</div>
-      <div id="stop">stop</div>
+      <div class="start">start</div>
+      <div class="stop">stop</div>
     </div>
-    <div id="name">
-      Pixel Gen by: <a href="https://zachurich.com">zach urich</a>
+    <div class="name">
+      created by: <a href="https://zachurich.com">zach urich</a>
     </div>
     <script type="module" src="./index.js"></script>
   </body>

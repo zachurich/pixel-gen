@@ -4,8 +4,8 @@ import download from "downloadjs";
 
 const dpiRatio = window.devicePixelRatio;
 const canvas = document.querySelector("#canvas");
-const start = document.querySelector("#start");
-const stop = document.querySelector("#stop");
+const start = document.querySelector(".start");
+const stop = document.querySelector(".stop");
 
 function setCanvasSize() {
   let initial;
