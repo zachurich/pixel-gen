@@ -23,10 +23,43 @@
         font-size: 16px;
       }
 
+      canvas {
+        padding: 1rem;
+        border-width: 2px;
+        border-style: solid;
+        animation: borderColor 1.5s ease forwards;
+      }
+
+      @keyframes borderColor {
+        0% {
+          border-color: transparent;
+        }
+        100% {
+          border-color: #e7e7e7;
+        }
+      }
+
+      @keyframes visibility {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 100%;
+        }
+      }
+
+      .wrapper {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 80%;
+      }
+
       .controls {
         position: absolute;
-        bottom: 0px;
-        right: 0px;
+        bottom: -90px;
         padding: 20px;
       }
 
@@ -62,8 +95,7 @@
         border-bottom: 2px solid #6c46dd;
         display: block;
         position: absolute;
-        left: 0;
-        bottom: 0;
+        bottom: 0px;
         margin: 20px;
         padding-bottom: 0.25rem;
       }
@@ -73,10 +105,12 @@
         color: inherit;
       }
     </style>
-    <canvas id="canvas"></canvas>
-    <div class="controls">
-      <div class="start">start</div>
-      <div class="stop">stop</div>
+    <div class="wrapper">
+      <canvas id="canvas"></canvas>
+      <div class="controls">
+        <div class="start">start</div>
+        <div class="stop">stop</div>
+      </div>
     </div>
     <div class="name">
       created by: <a href="https://zachurich.com">zach urich</a>
