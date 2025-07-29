@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "node": "23.10.0",
   "scripts": {
-    "dev": "parcel index.html",
-    "build": "parcel build index.html --public-url ./",
-    "deploy": "npm run build && git add dist && git commit -m 'Initial dist subtree commit' && git subtree push --prefix dist origin gh-pages"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +15,6 @@
     "downloadjs": "^1.4.7"
   },
   "devDependencies": {
-    "parcel": "^1.10.2"
+    "vite": "^7.0.6"
   }
 }
